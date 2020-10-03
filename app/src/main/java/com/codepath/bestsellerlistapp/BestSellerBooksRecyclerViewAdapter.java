@@ -3,12 +3,12 @@ package com.codepath.bestsellerlistapp;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.codepath.bestsellerlistapp.models.BestSellerBook;
 
 import java.util.List;
@@ -41,6 +41,7 @@ public class BestSellerBooksRecyclerViewAdapter extends RecyclerView.Adapter<Bes
         holder.mBookAuthor.setText(books.get(position).author);
         holder.ranking.setText(Integer.toString(books.get(position).rank));
         holder.book_description.setText(books.get(position).description);
+        Glide.with(holder.mView).load(books.get(position).bookImageUrl).centerInside().into(holder.book_image);
 
 
 
@@ -70,7 +71,6 @@ public class BestSellerBooksRecyclerViewAdapter extends RecyclerView.Adapter<Bes
         public final TextView ranking;
         public final ImageView book_image;
         public final TextView book_description;
-        //public final Button buy_button;
 
 
 
@@ -83,7 +83,6 @@ public class BestSellerBooksRecyclerViewAdapter extends RecyclerView.Adapter<Bes
             ranking = (TextView) view.findViewById(R.id.ranking);
             book_image = (ImageView) view.findViewById(R.id.book_image);
             book_description = (TextView) view.findViewById(R.id.book_description);
-            //buy_button = (Button) view.findViewById(R.id.buy_button);
 
         }
 
